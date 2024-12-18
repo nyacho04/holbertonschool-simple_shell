@@ -3,7 +3,7 @@
 int main(void)
 {
 	char *pathname = "/bin/ls";
-	char *argv[] = {pathname,"/root", "holbertonschool-simple_shell", "pre-shell", NULL};
+	char *argv[] = {pathname,"/holbertonschool-simple_shell/pre-shell", NULL};
 	char *envp[] = {NULL};
 
 	if (execve(pathname, argv, envp) == -1)
