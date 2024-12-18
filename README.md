@@ -1,2 +1,2 @@
 # holbertonschool-simple_shell
-## NASHELL
+## The Nashell
