@@ -7,7 +7,7 @@
 int main(void)
 {
 	// Declaraciones del fork
-	pid_t hijo1, hijo2; //hijo3, hijo4, hijo5;
+	pid_t hijos;
 	// Declaraciones de wait
 	int status;
 	// Declaraciones de execve
@@ -15,41 +15,31 @@ int main(void)
 	char *argv[] = {pathname, "-l",  "/tmp", NULL};
 	char *envp[] = {NULL};
 
-	hijo1 = fork();
+	int i;
 
-	if (hijo1 == -1)
+	for (i = 0; i < 5; i++)
 	{
-		perror("ERROR");
-		return (-1);
-	}
+		hijos = fork();
 
-	if (hijo1 == 0)
-	{
-		printf("hijo1\n");
-		if (execve(pathname, argv, envp) == -1)
+		if (hijos == -1)
 		{
 			perror("Error");
 			return (-1);
 		}
-	}
-	else
-	{
-		hijo2 = fork();
 
-		if (hijo2 == 0)
+		if (hijos == 0)
 		{
-			printf("hijo2\n");
+			printf("Proceso hijo %d\n", i + 1);
 			if (execve(pathname, argv, envp) == -1)
 			{
-				perror("error");
-				return (-1);
+				perror("Error en execve");
+				exit(1);
 			}
 		}
-		else
-		{
-			wait(&status);
-			printf("padre\n");
-		}
+
+		wait(&status);
 	}
+	printf("todos los hijos terminaron");
+	
 	return (0);
-}		
+}
