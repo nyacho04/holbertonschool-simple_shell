@@ -1,12 +1,12 @@
 #include <stdio.h>
 #include <unistd.h>
-int main(void)
+int main(int ac __attribute__((unused)), char **av)
 {
 	char *pathname = "/bin/ls";
-	char *argv[] = {pathname,"/holbertonschool-simple_shell/pre-shell", NULL};
+	//char *argv[] = {pathname, av, NULL};
 	char *envp[] = {NULL};
 
-	if (execve(pathname, argv, envp) == -1)
+	if (execve(pathname, av, envp) == -1)
 	{
 		perror("Error carrapito");
 	}

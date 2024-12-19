@@ -6,7 +6,7 @@
  * Return: void
  */
 
-int main (int ac, char **av)
+int main (int ac, char **av) // **av es un puntero a un puntero char que se ingresa al escribir junto al ejecutable al momento de ejecutar
 {
 	int i;
 
