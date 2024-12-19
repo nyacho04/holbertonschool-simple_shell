@@ -9,7 +9,7 @@
  */
 void display_prompt (void)
 {
-    printf("nashell$");
+    printf("nashell$ ");
     fflush(stdout);
 }
 /**
@@ -36,7 +36,7 @@ int main (void)
         {
             continue;
         }
-        printf("funca %s", line);
+        printf("nashell$ %s", line);
         free(line);
         line = NULL;
         len = 0;
