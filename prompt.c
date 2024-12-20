@@ -2,22 +2,22 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+
 /**
- * main - Entry point
- *
- * Return: Always 0
+ * display_prompt - Displays the shell prompt
  */
-void display_prompt (void)
+void display_prompt(void)
 {
     printf("nashell$ ");
     fflush(stdout);
 }
+
 /**
- * main - Entry point
+ * main - Entry point of the shell program
  *
  * Return: Always 0
  */
-int main (void)
+int main(void)
 {
     char *line = NULL;
     size_t len = 0;
@@ -36,10 +36,10 @@ int main (void)
         {
             continue;
         }
-        printf("nashell$ %s", line);
+        printf("funca %s", line);
         free(line);
         line = NULL;
-        len = 0;
     }
-        return (0);
+
+    return (0);
 }
