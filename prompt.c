@@ -1,8 +1,7 @@
-#include "nashell.h"
+#include "main.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-
 /**
  * display_prompt - Displays the shell prompt
  */
@@ -11,7 +10,6 @@ void display_prompt(void)
     printf("nashell$ ");
     fflush(stdout);
 }
-
 /**
  * main - Entry point of the shell program
  *
@@ -36,6 +34,12 @@ int main(void)
         {
             continue;
         }
+        /* 
+        if (!handle_builtin(line))
+        {
+            execute_command(line);
+        }
+        */
         printf("funca %s", line);
         free(line);
         line = NULL;
