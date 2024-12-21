@@ -1,4 +1,5 @@
-# Simple shell: The nashell
+# HolbertonSchool Simple Shell: The nashell
+*Project created by [Ignacio Devita](https://github.com/nyacho04) and [Franco Reyes](https://github.com/Franco-byte).*
 
 ![nashell](https://github.com/user-attachments/assets/263f54fb-5501-48e4-a24a-93cac75d12e6)
 
