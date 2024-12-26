@@ -76,22 +76,121 @@ char *srch_path(char *line)
  *
  */
 
+char *flags_process(char *line)
+{
+	char *token;
+	int track = 0, frst_token = 1;
+	char *buffer = malloc(sizeof(char *) *1024);
+
+	char *cpy = strdup(line);
+	
+	for (token = strtok(cpy, " "); token != NULL; token = strtok(NULL, " "))
+	{
+		if (frst_token)
+		{
+			frst_token = 0;
+			continue;
+		}
+
+		if (track > 0)
+			track += sprintf(buffer + track, " ");
+
+		track += sprintf(buffer + track, "%s", token);
+	}
+
+	if (buffer == NULL)
+	{
+		free(cpy);
+		return (NULL);
+	}
+	free(cpy);
+	return (buffer);
+}
+
+/**
+ *
+ *
+ */
+
+char *exfowa(char *pointer)
+{
+	// Var strtok
+	int i = 0;
+	char *token;
+	char **array = malloc(sizeof(char *) * 1024);
+	// Var fork
+	pid_t pid;
+	// Var wait
+	int status;
+
+	if (array == NULL)
+	{
+		perror("Memory allocation failed");
+		free(array);
+		return (NULL);
+	}
+
+	if (pointer != NULL)
+	{
+		token = strtok(pointer, " \n");
+		while (token != NULL)
+		{
+			array[i] = token;
+			i++;
+			token = strtok(NULL, " \n");
+		}
+		array[i] = NULL;
+		if (array[0] == NULL)
+		{
+			free(array);
+			return (NULL);
+		}
+
+		pid = fork();
+
+		if (pid == -1)
+		{
+			free(array);
+			return (NULL);
+		}
+
+		if (pid == 0)
+		{
+			if (execve(array[0], array, NULL) == -1)
+			{
+				free(array);
+				return (NULL);
+			}
+		}
+		else
+		{
+			if (wait(&status) == -1)
+				perror("Wait failed");
+		}
+	}
+	else
+	{
+		free(array);
+		return (NULL);
+	}
+	return(0);
+}
+
+
+/**
+ *
+ *
+ *
+ */
+
 int main(void)
 {
 	// Variables del getline
 	char *line = NULL;
 	size_t len = 0;
 	ssize_t result = 0;
-	// Variables del strtok
-	int i = 0;
-	char *token; //*aux;
-	char **array;
-	// Variables del fork
-	pid_t pid;
-	// Variables del wait
-	int status;
-	// Variable para srch_path
-	char *route;
+	// Variable para srch_path y flags_process
+	char *route, *flags;
 
 
 	while (result != -1)
@@ -105,89 +204,73 @@ int main(void)
 		if (strcmp(line, "exit\n") == 0) // Sale del bucle "$"
 			break;
 
-		if (result > 0 && line[result - 1] == '\n')
+		if (result > 0 && line[result - 1] == '\n') // Saca el valor "\n" para poder ejecutar comandos solos
 			line[result - 1] = '\0';
 
 		if (result > 1)
 		{
 			route = srch_path(line);
+			flags = flags_process(line);
+
 			if (route == NULL)
 			{
 				perror("File not found in PATH");
 				free(line);
 				free(route);
+				free(flags);
 				continue;
 			}
 
-			array = malloc(sizeof(char *) * 1024);
-
-			if (array == NULL)
+			if (flags != NULL)
 			{
-				perror("Error al asignar memoria");
-				free(line);
-				free(route);
-				return (1);
-			}
-
-			i = 0;
+				char *rut_and_flgs = malloc(sizeof(char *) * 1024);
 			
-			if (route != NULL)
-			{
-				token = strtok(route, " \n");
-
-				while (token != NULL)
+				if (rut_and_flgs == NULL)
 				{
-					array[i] = token;
-					i++;
-					token = strtok(NULL, " \n");
-				}
-
-				array[i] = NULL;
-
-				if (array[0] == NULL)
-				{
-					free(array);
-					free(route);
-					continue;
-				}
-
-				pid = fork();
-
-				if (pid == -1)
-				{
-					perror("Error al realizar fork");
-					free(array);
+					perror("Memory allocation failed to route and flags");
 					free(line);
 					free(route);
-					return (1);
+					free(flags);
 				}
-				if (pid == 0)
+
+				sprintf(rut_and_flgs, "%s %s", route, flags);
+
+				exfowa(rut_and_flgs);
+
+				if (rut_and_flgs == NULL)
 				{
-					if (execve(array[0], array, NULL) == -1)
-					{
-						perror("Error en la ejecucion execve");
-						free(array);
-						free(line);
-						free(route);
-						return (1);
-					}
+					perror("Process failed");
+					free(rut_and_flgs);
+					return (-1);
 				}
-				else
+				if (rut_and_flgs == NULL)
 				{
-					if (wait(&status) == -1)
-					{
-						perror("Error en el wait");
-					}
+					perror("Error when serching in the path");
+					free(rut_and_flgs);
+					return (-1);
 				}
 			}
 			else
 			{
-				perror("The file not found in PATH");
-				free(route);
+				free(flags);
+
+				exfowa(route);
+
+				if (route == NULL)
+				{
+					perror("Process failed");
+					free(route);
+					return (-1);
+				}
+				if (route == NULL)
+				{
+					perror("Error when serching in the path");
+					free(route);
+					return (-1);
+				}
 			}
 		}
 	}
-	free(array);
 	free(route);
 	free(line);
 	return (0);
