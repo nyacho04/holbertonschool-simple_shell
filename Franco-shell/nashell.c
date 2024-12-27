@@ -1,13 +1,16 @@
 #include "nashell.h"
 
+extern char **environ;
+
 /**
+ * main - Run the shell
  *
- *
+ * Return: zero
  */
 
 int main(void)
 {
-	char *line = NULL, *route;
+	char *line = NULL, *route = NULL, *flags = NULL;
 	size_t len = 0;
 	ssize_t result = 0;
 
@@ -21,11 +24,55 @@ int main(void)
 			break;
 		if (result > 0 && line[result - 1] == '\n')
 			line[result - 1] = '\0';
+
+		if (strcmp(line, "env") == 0)
+		{
+			char **env;
+
+			for (env = environ; *env != NULL; env++)
+				printf("%s\n", *env);
+			continue;
+		}
+
 		if (result > 1)
 		{
 			route = srch_path(line);
-			printf("%s\n", route);
+			flags = flags_process(line);
+			
+			if (route == NULL)
+			{
+				perror("comand not found");
+				free(line);
+				line = NULL;
+				free(flags);
+				flags = NULL;
+				continue;
+			}
+
+			if (flags != NULL)
+			{
+				char *rut_and_flgs;
+
+				rut_and_flgs = calloc(1024, sizeof(char));
+				if (rut_and_flgs == NULL)
+				{
+					free(line);
+					free(route);
+					free(flags);
+					return (-1);
+				}
+				
+				sprintf(rut_and_flgs, "%s %s", route, flags);
+				exfowa(rut_and_flgs);
+				free(rut_and_flgs);
+			}
+			else
+				exfowa(route);
+
 			free(route);
+			route = NULL;
+			free(flags);
+			flags = NULL;
 		}
 	}
 	free(line);
