@@ -24,7 +24,7 @@ char *srch_path(char *pointer)
 		return (NULL);
 	}
 
-	command =strtok(cpy, " \n");
+	command = strtok(cpy, " \n\t");
 	if (command == NULL)
 	{
 		free(cpy);

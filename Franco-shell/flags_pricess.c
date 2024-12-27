@@ -22,7 +22,7 @@ char *flags_process(char *pointer)
 		return (NULL);
 	}
 
-	for (token = strtok(cpy, " "); token != NULL; token = strtok(NULL, " "))
+	for (token = strtok(cpy, " \t"); token != NULL; token = strtok(NULL, " \t"))
 	{
 		if (frst_tok)
 		{
