@@ -1,4 +1,4 @@
-#include "nashell.h"
+#include "main.h"
 
 extern char **environ;
 

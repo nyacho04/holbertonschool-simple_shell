@@ -1,4 +1,4 @@
-#include "nashell.h"
+#include "main.h"
 
 /**
  * flags_process - Processes the flags in the string ignoring the first token

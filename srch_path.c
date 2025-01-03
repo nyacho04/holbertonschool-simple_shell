@@ -1,4 +1,4 @@
-#include "nashell.h"
+#include "main.h"
 
 /**
  * srch_path - Differentiates a command from an absolute
