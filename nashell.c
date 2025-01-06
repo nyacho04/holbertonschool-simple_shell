@@ -50,7 +50,7 @@ int main(void)
 			{
 				char *rut_and_flgs;
 
-				rut_and_flgs = calloc(BUFFER_SIZE, sizeof(char));
+				rut_and_flgs = malloc(BUFFER_SIZE);
 				if (rut_and_flgs == NULL)
 				{
 					free(line);
