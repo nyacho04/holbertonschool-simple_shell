@@ -15,6 +15,7 @@ int main(void)
 	while (result != -1)
 	{
 		printf("nashell$ ");
+		fflush(stdout);
 		result = getline(&line, &len, stdin);
 		if (result == -1)
 			break;

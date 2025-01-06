@@ -12,9 +12,11 @@ char *flags_process(char *pointer)
 	char *token, *buffer, *cpy;
 	int track = 0, frst_tok = 1;
 
-	buffer = calloc(BUFFER_SIZE, sizeof(char));
+	buffer = malloc(BUFFER_SIZE * sizeof(char));
 	if (buffer == NULL)
 		return (NULL);
+	buffer[0] = '\0';
+
 	cpy = strdup(pointer);
 	if (cpy == NULL)
 	{

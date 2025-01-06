@@ -13,7 +13,7 @@ char *execute(char *pointer)
 	pid_t pid;
 	char *token, **array;
 
-	array = malloc(sizeof(char *) * 1024);
+	array = malloc(sizeof(char *) * BUFFER_SIZE);
 	if (array == NULL)
 		return (NULL);
 	if (pointer != NULL)
