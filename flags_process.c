@@ -12,7 +12,7 @@ char *flags_process(char *pointer)
 	char *token, *buffer, *cpy;
 	int track = 0, frst_tok = 1;
 
-	buffer = calloc(1024, sizeof(char));
+	buffer = calloc(BUFFER_SIZE, sizeof(char));
 	if (buffer == NULL)
 		return (NULL);
 	cpy = strdup(pointer);

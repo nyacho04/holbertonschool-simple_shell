@@ -1,7 +1,5 @@
 #include "main.h"
 
-extern char **environ;
-
 /**
  * main - Run the shell
  *
@@ -33,7 +31,6 @@ int main(void)
 				printf("%s\n", *env);
 			continue;
 		}
-
 		if (result > 1)
 		{
 			route = srch_path(line);
@@ -48,12 +45,11 @@ int main(void)
 				flags = NULL;
 				continue;
 			}
-
 			if (flags != NULL)
 			{
 				char *rut_and_flgs;
 
-				rut_and_flgs = calloc(1024, sizeof(char));
+				rut_and_flgs = calloc(BUFFER_SIZE, sizeof(char));
 				if (rut_and_flgs == NULL)
 				{
 					free(line);
@@ -63,11 +59,11 @@ int main(void)
 				}
 				
 				sprintf(rut_and_flgs, "%s %s", route, flags);
-				exfowa(rut_and_flgs);
+				execute(rut_and_flgs);
 				free(rut_and_flgs);
 			}
 			else
-				exfowa(route);
+				execute(route);
 
 			free(route);
 			route = NULL;

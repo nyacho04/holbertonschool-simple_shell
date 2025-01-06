@@ -9,8 +9,11 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 
+#define BUFFER_SIZE 1024
+extern char **environ;
+
 char *srch_path(char *line);
 char *flags_process(char *line);
-char *exfowa(char *pointer);
+char *execute(char *pointer);
 
 #endif

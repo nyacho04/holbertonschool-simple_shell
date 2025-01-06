@@ -1,13 +1,13 @@
 #include "main.h"
 
 /**
- * exfowa - Execute the command using the for, execve and wait functions
+ * execute - Execute the command using the for, execve and wait functions
  * @pointer: Pointer to string (command and flags)
  *
  * Return: If this goes well... nothing
  */
 
-char *exfowa(char *pointer)
+char *execute(char *pointer)
 {
 	int i = 0, st;
 	pid_t pid;
