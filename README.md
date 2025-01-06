@@ -7,3 +7,51 @@
 A shell is a user interface that allows you to interact with the operating system of a computer. It acts as a command-line interpreter, enabling users to execute commands, run programs, and manage files. Shells can be graphical, like the interfaces you see on Windows or macOS, or text-based, where you type commands into a terminal window.
 
 - This is a custom implementation of a "simple shell" in C, The project includes a set of functions like it allows you to manage variables, handle basic errors and execute commands.
+## File Descriptions
+
+- **[nashell.c](nashell.c)**: This is the main file that runs the shell. It reads input from the user, processes commands, and calls the appropriate functions to execute them.
+
+- **[main.h](main.h)**: This header file contains the necessary includes, definitions, and function prototypes used throughout the project.
+
+- **[execute.c](execute.c)**: This file contains the `execute` function, which executes the command using `fork`, `execve`, and `wait` functions.
+
+- **[flags_process.c](flags_process.c)**: This file contains the `flags_process` function, which processes the flags in the command string, ignoring the first token (the command itself).
+
+- **[srch_path.c](srch_path.c)**: This file contains the `srch_path` function, which differentiates a command from an absolute path and returns a pointer to the absolute path.
+
+- **[AUTHORS](AUTHORS)**: This file lists all individuals who have contributed content to the repository.
+
+- **[README.md](README.md)**: This file provides an overview of the project, including descriptions of each file and how the shell works.
+
+## How the Shell Prompt Works
+
+1. **Prompt Display**: The shell displays the prompt `nashell$ ` to indicate that it is ready to accept user input.
+
+2. **Reading Input**: The shell reads the input from the user using the `getline` function.
+
+3. **Command Processing**:
+   - If the user types `exit`, the shell terminates.
+   - If the user types `env`, the shell prints the current environment variables.
+   - For other commands, the shell processes the input to separate the command and its flags.
+
+4. **Path Search**: The shell uses the `srch_path` function to determine the absolute path of the command.
+
+5. **Flag Processing**: The shell uses the `flags_process` function to process any flags provided with the command.
+
+6. **Command Execution**: The shell uses the `execute` function to execute the command with the provided flags. This involves creating a child process using `fork`, replacing the child process with the command using `execve`, and waiting for the command to complete using `wait`.
+
+7. **Loop**: The shell continues to display the prompt and process commands until the user types `exit` or an error occurs.
+
+## Example Usage
+
+```sh
+nashell$ ls -l
+total 8
+-rw-r--r-- 1 user user  0 Oct  1 12:00 AUTHORS
+-rw-r--r-- 1 user user  0 Oct  1 12:00 README.md
+-rw-r--r-- 1 user user  0 Oct  1 12:00 execute.c
+-rw-r--r-- 1 user user  0 Oct  1 12:00 flags_process.c
+-rw-r--r-- 1 user user  0 Oct  1 12:00 main.h
+-rw-r--r-- 1 user user  0 Oct  1 12:00 nashell.c
+-rw-r--r-- 1 user user  0 Oct  1 12:00 srch_path.c
+nashell$ exit
