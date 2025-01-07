@@ -13,7 +13,7 @@ char *srch_path(char *pointer)
 	char *path, *path_cpy, *dir, *command, *cpy_cmd, *fl_route, *cpy;
 	struct stat st;
 
-	fl_route = malloc(sizeof(char) * 1024);
+	fl_route = malloc(sizeof(char) * BUFFER_SIZE);
 	if (fl_route == NULL)
 		return (NULL);
 
