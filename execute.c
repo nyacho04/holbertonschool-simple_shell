@@ -51,17 +51,6 @@ char *execute(char *pointer)
 				perror("wait failed");
 				free(array);
 			}
-			else
-			{
-				if (WIFEXITED(st))
-				{
-					status = WEXITSTATUS(st);
-					if (status == 127)
-					{
-						fprintf(stderr, "%s: %s: not found\n", array[0], array[0]);
-					}
-				}
-			}
 		}
 	}
 	else
