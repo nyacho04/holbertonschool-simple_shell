@@ -23,7 +23,7 @@ A shell is a user interface that allows you to interact with the operating syste
 
 - **[README.md](README.md)**: This file provides an overview of the project, including descriptions of each file and how the shell works.
 
-## How the Shell Prompt Works
+## How the Shell Prompt Works?
 
 1. **Prompt Display**: The shell displays the prompt `nashell$ ` to indicate that it is ready to accept user input.
 
@@ -42,9 +42,15 @@ A shell is a user interface that allows you to interact with the operating syste
 
 7. **Loop**: The shell continues to display the prompt and process commands until the user types `exit` or an error occurs.
 
-## Example Usage
+## Return Values
+- The `execute` function returns 0 on success and NULL on failure.
+- The `flags_process` function returns a pointer to the string without the first token or NULL on failure.
+- The `srch_path` function returns a pointer to the path in the PATH or to the entered path, or NULL on failure.
+- The `main` function (nashell) returns 0 on success.
 
-```sh
+## Examples Usage
+
+```s
 nashell$ ls -l
 total 8
 -rw-r--r-- 1 user user  0 Oct  1 12:00 AUTHORS
@@ -55,3 +61,23 @@ total 8
 -rw-r--r-- 1 user user  0 Oct  1 12:00 nashell.c
 -rw-r--r-- 1 user user  0 Oct  1 12:00 srch_path.c
 nashell$ exit
+```
+```s
+nashell$ pwd
+/home/user/holbertonschool-simple_shell-6
+nashell$ exit
+```
+```s
+nashell$ whoami
+user
+nashell$ exit
+```
+```s
+nashell$ env
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+HOME=/home/user
+LOGNAME=user
+```
+## Flowchart of the main function
+![image](https://github.com/user-attachments/assets/4056af18-a90d-4cc4-bd2e-ad36630e95af)
+
