@@ -1,9 +1,8 @@
 #include "main.h"
-
 /**
- * main - Run the shell
- *
- * Return: zero
+ * main - Entry point
+ * @void: No arguments
+ * Return: Return 0 on success
  */
 
 int main(void)

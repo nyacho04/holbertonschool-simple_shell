@@ -1,10 +1,8 @@
 #include "main.h"
-
 /**
  * flags_process - Processes the flags in the string ignoring the first token
- * @pointer: The pointer to the string
- *
- * Return: The flags
+ * @pointer: A pointer to the string to process
+ * Return: A pointer to the string without the first token
  */
 
 char *flags_process(char *pointer)

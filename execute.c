@@ -1,10 +1,8 @@
 #include "main.h"
-
 /**
- * execute - Execute the command using the for, execve and wait functions
- * @pointer: Pointer to string (command and flags)
- *
- * Return: If this goes well... nothing
+ * execute - Executes a command with its flags
+ * @pointer: A pointer to the command to execute
+ * Return: 0 on success
  */
 
 char *execute(char *pointer)

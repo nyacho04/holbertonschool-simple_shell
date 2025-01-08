@@ -1,5 +1,4 @@
 #include "main.h"
-
 /**
  * srch_path - Differentiates a command from an absolute
  * path, then return a pointer to the absolite path
