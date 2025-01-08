@@ -42,7 +42,7 @@ char *srch_path(char *pointer, char *argv0)
 		}
 		else
 		{
-			fprintf(stderr, "%s: %s: not found\n", argv0, command);
+			fprintf(stderr, "%s: 1: %s: not found\n", argv0, command);
 			free(fl_route);
 			free(cpy);
 			return (NULL);
