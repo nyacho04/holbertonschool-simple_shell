@@ -7,7 +7,7 @@
 
 char *execute(char *pointer)
 {
-	int i = 0, st;
+	int i = 0, st, status;
 	pid_t pid;
 	char *token, **array;
 
@@ -41,7 +41,7 @@ char *execute(char *pointer)
 			{
 				free(array);
 				perror("execve failed");
-				exit(1);
+				exit(127);
 			}
 		}
 		else
@@ -50,6 +50,17 @@ char *execute(char *pointer)
 			{
 				perror("wait failed");
 				free(array);
+			}
+			else
+			{
+				if (WIFEXITED(st))
+				{
+					status = WEXITSTATUS(st);
+					if (status == 127)
+					{
+						fprintf(stderr, "%s: %s: not found\n", array[0], array[0]);
+					}
+				}
 			}
 		}
 	}
