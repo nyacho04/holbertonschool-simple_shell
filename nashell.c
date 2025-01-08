@@ -13,8 +13,11 @@ int main(int __attribute__((unused)) argc, char **argv)
 
 	while (result != -1)
 	{
+		if (is_interactive())
+		{
 		printf("nashell$ ");
 		fflush(stdout);
+		}
 		result = getline(&line, &len, stdin);
 		if (result == -1)
 			break;
