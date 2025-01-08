@@ -5,7 +5,7 @@
  * Return: Return 0 on success
  */
 
-int main(void)
+int main(int __attribute__((unused)) argc, char **argv)
 {
 	char *line = NULL, *route = NULL, *flags = NULL;
 	size_t len = 0;
@@ -33,12 +33,11 @@ int main(void)
 		}
 		if (result > 1)
 		{
-			route = srch_path(line);
+			route = srch_path(line, argv[0]);
 			flags = flags_process(line);
 			
 			if (route == NULL)
 			{
-				perror("comand not found");
 				free(line);
 				line = NULL;
 				free(flags);

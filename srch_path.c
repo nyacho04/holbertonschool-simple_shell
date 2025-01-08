@@ -7,7 +7,7 @@
  * Return: A pointe to the path in the PATH or to the entered path
  */
 
-char *srch_path(char *pointer)
+char *srch_path(char *pointer, char *argv0)
 {
 	char *path, *path_cpy, *dir, *command, *cpy_cmd, *fl_route, *cpy;
 	struct stat st;
@@ -33,10 +33,20 @@ char *srch_path(char *pointer)
 
 	if (command[0] == '/')
 	{
-		cpy_cmd = strdup(command);
-		free(fl_route);
-		free(cpy);
-		return (cpy_cmd);
+		if (stat(command, &st) == 0)
+		{
+			cpy_cmd = strdup(command);
+			free(fl_route);
+			free(cpy);
+			return (cpy_cmd);
+		}
+		else
+		{
+			fprintf(stderr, "%s: %s: No such file or directory\n", argv0, command);
+			free(fl_route);
+			free(cpy);
+			return (NULL);
+		}
 	}
 	else
 	{
@@ -68,9 +78,10 @@ char *srch_path(char *pointer)
 			}
 			dir = strtok(NULL, ":");
 		}
+		fprintf(stderr, "%s: %s: command not found\n", argv0, command);
+		free(cpy);
+		free(path_cpy);
+		free(fl_route);
 	}
-	free(cpy);
-	free(path_cpy);
-	free(fl_route);
 	return (NULL);
 }
