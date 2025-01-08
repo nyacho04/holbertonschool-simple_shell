@@ -9,21 +9,21 @@ A shell is a user interface that allows you to interact with the operating syste
 - This is a custom implementation of a "simple shell" in C, The project includes a set of functions like it allows you to manage variables, handle basic errors and execute commands.
 ## File Descriptions
 
-- **[nashell.c](nashell.c)**: This is the main file that runs the shell. It reads input from the user, processes commands, and calls the appropriate functions to execute them.
+- **[nashell.c](nashell.c)** This is the main file that runs the shell. It reads input from the user, processes commands, and calls the appropriate functions to execute them.
 
-- **[main.h](main.h)**: This header file contains the necessary includes, definitions, and function prototypes used throughout the project.
+- **[main.h](main.h)** This header file contains the necessary includes, definitions, and function prototypes used throughout the project.
 
-- **[execute.c](execute.c)**: This file contains the `execute` function, which executes the command using `fork`, `execve`, and `wait` functions.
+- **[execute.c](execute.c)** This file contains the `execute` function, which executes the command using `fork`, `execve`, and `wait` functions.
 
-- **[is_interactive.c](interactive.c)**: This file is used to determine if the shell is running in an interactive mode. This is important for deciding how the shell should behave in different environments.
+- **[is_interactive.c](interactive.c)** This file is used to determine if the shell is running in an interactive mode. This is important for deciding how the shell should behave in different environments.
 
-- **[flags_process.c](flags_process.c)**: This file contains the `flags_process` function, which processes the flags in the command string, ignoring the first token (the command itself).
+- **[flags_process.c](flags_process.c)** This file contains the `flags_process` function, which processes the flags in the command string, ignoring the first token (the command itself).
 
-- **[search_path.c](srch_path.c)**: This file contains the `srch_path` function, which differentiates a command from an absolute path and returns a pointer to the absolute path.
+- **[search_path.c](srch_path.c)** This file contains the `srch_path` function, which differentiates a command from an absolute path and returns a pointer to the absolute path.
 
-- **[AUTHORS](AUTHORS)**: This file lists all individuals who have contributed content to the repository.
+- **[AUTHORS](AUTHORS)** This file lists all individuals who have contributed content to the repository.
 
-- **[README.md](README.md)**: This file provides an overview of the project, including descriptions of each file and how the shell works.
+- **[README.md](README.md)** This file provides an overview of the project, including descriptions of each file and how the shell works.
 
 ## How the Shell Prompt Works?
 
