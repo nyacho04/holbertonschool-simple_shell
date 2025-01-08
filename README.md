@@ -78,6 +78,12 @@ PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 HOME=/home/user
 LOGNAME=user
 ```
-## Flowchart of the main function
+## Main Function Flowchart (nashell.c)
 ![image](https://github.com/user-attachments/assets/4056af18-a90d-4cc4-bd2e-ad36630e95af)
+
+# Compilation 
+- This shell will be compiled with:
+```
+gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
+```
 
