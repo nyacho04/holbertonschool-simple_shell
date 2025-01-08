@@ -7,7 +7,7 @@
 
 char *execute(char *pointer)
 {
-	int i = 0, st, status;
+	int i = 0, st;
 	pid_t pid;
 	char *token, **array;
 
