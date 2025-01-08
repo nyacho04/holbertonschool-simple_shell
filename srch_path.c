@@ -9,7 +9,7 @@
 
 char *srch_path(char *pointer, char *argv0)
 {
-	char *path, *path_cpy, *dir, *command, *cpy_cmd, *fl_route, *cpy;
+	char *path, *path_cpy, *dir, *command, *cpy_cmd, *fl_route, *cpy, **env;
 	struct stat st;
 
 	fl_route = malloc(sizeof(char) * BUFFER_SIZE);
@@ -50,7 +50,15 @@ char *srch_path(char *pointer, char *argv0)
 	}
 	else
 	{
-		path = getenv("PATH");
+		path = NULL;
+		for (env = environ; *env != NULL; env++)
+		{
+			if (strncmp(*env, "PATH=", 5) == 0)
+			{
+				path = *env + 5;
+				break;
+			}
+		}
 		if (path == NULL)
 		{
 			free(cpy);
