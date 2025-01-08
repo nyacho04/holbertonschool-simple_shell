@@ -2,7 +2,7 @@
 /**
  * main - Entry point
  * @void: No arguments
- * Return: Return 0 on success
+ * Return: 0 on success
  */
 
 int main(int __attribute__((unused)) argc, char **argv)

@@ -15,6 +15,8 @@ A shell is a user interface that allows you to interact with the operating syste
 
 - **[execute.c](execute.c)**: This file contains the `execute` function, which executes the command using `fork`, `execve`, and `wait` functions.
 
+- **[is_interactive.c](is_interactive.c)**: This file is used to determine if the shell is running in an interactive mode. This is important for deciding how the shell should behave in different environments.
+
 - **[flags_process.c](flags_process.c)**: This file contains the `flags_process` function, which processes the flags in the command string, ignoring the first token (the command itself).
 
 - **[srch_path.c](srch_path.c)**: This file contains the `srch_path` function, which differentiates a command from an absolute path and returns a pointer to the absolute path.
@@ -44,6 +46,7 @@ A shell is a user interface that allows you to interact with the operating syste
 
 ## Return Values
 - The `execute` function returns 0 on success and NULL on failure.
+- The `is_interactive` Returns 1 if the shell is running interactively and if it returns 0 is not.
 - The `flags_process` function returns a pointer to the string without the first token or NULL on failure.
 - The `srch_path` function returns a pointer to the path in the PATH or to the entered path, or NULL on failure.
 - The `main` function (nashell) returns 0 on success.
