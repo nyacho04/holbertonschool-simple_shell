@@ -31,7 +31,7 @@ char *srch_path(char *pointer, char *argv0)
 		return (NULL);
 	}
 
-	if (command[0] == '/')
+	if (command[0] == '/' || command[0] == '.')
 	{
 		if (stat(command, &st) == 0)
 		{
