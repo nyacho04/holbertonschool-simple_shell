@@ -80,6 +80,7 @@ nashell$ env
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 HOME=/home/user
 LOGNAME=user
+. . .
 ```
 ## Main Function Flowchart (nashell.c)
 ![image](https://github.com/user-attachments/assets/4056af18-a90d-4cc4-bd2e-ad36630e95af)
