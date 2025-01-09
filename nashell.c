@@ -10,7 +10,7 @@ int main(int __attribute__((unused)) argc, char **argv)
 	char *line = NULL, *route = NULL, *flags = NULL;
 	size_t len = 0;
 	ssize_t result = 0;
-	int st = 0;
+	int st = 2;
 
 	while (result != -1)
 	{
