@@ -87,10 +87,11 @@ char *srch_path(char *pointer, char *argv0, int *status)
 			}
 			dir = strtok(NULL, ":");
 		}
-		fprintf(stderr, "%s: %s: command not found\n", argv0, command);
+		fprintf(stderr, "%s: 1: %s: not found\n", argv0, command);
 		free(cpy);
 		free(path_cpy);
 		free(fl_route);
+		*status = 127;
 	}
 	return (NULL);
 }
