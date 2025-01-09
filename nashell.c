@@ -62,7 +62,8 @@ int main(int __attribute__((unused)) argc, char **argv)
 				}
 				
 				sprintf(rut_and_flgs, "%s %s", route, flags);
-				execute(rut_and_flgs);
+				if (execute(rut_and_flgs) == NULL)
+					st = 2;
 				free(rut_and_flgs);
 			}
 			else
