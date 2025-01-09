@@ -66,16 +66,15 @@ int main(int __attribute__((unused)) argc, char **argv)
 				free(rut_and_flgs);
 			}
 			else
-				execute(route);
+				if (execute(route) == NULL)
+					st = 2;
 
 			free(route);
 			route = NULL;
 			free(flags);
 			flags = NULL;
 		}
-	}
-	if (route == NULL)
-		st = 2;
+	};
 	free(line);
 	return (st);
 }

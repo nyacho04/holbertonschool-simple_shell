@@ -41,7 +41,7 @@ char *execute(char *pointer)
 			{
 				free(array);
 				perror("execve failed");
-				exit(127);
+				return (NULL);
 			}
 		}
 		else
