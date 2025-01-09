@@ -10,6 +10,7 @@ int main(int __attribute__((unused)) argc, char **argv)
 	char *line = NULL, *route = NULL, *flags = NULL;
 	size_t len = 0;
 	ssize_t result = 0;
+	int st = 0;
 
 	while (result != -1)
 	{
@@ -36,7 +37,7 @@ int main(int __attribute__((unused)) argc, char **argv)
 		}
 		if (result > 1)
 		{
-			route = srch_path(line, argv[0]);
+			route = srch_path(line, argv[0], &st);
 			flags = flags_process(line);
 			
 			if (route == NULL)
@@ -74,5 +75,5 @@ int main(int __attribute__((unused)) argc, char **argv)
 		}
 	}
 	free(line);
-	return (0);
+	return (st);
 }

@@ -7,7 +7,7 @@
  * Return: A pointe to the path in the PATH or to the entered path
  */
 
-char *srch_path(char *pointer, char *argv0)
+char *srch_path(char *pointer, char *argv0, int *status)
 {
 	char *path, *path_cpy, *dir, *command, *cpy_cmd, *fl_route, *cpy, **env;
 	struct stat st;
@@ -45,6 +45,7 @@ char *srch_path(char *pointer, char *argv0)
 			fprintf(stderr, "%s: 1: %s: not found\n", argv0, command);
 			free(fl_route);
 			free(cpy);
+			*status = 127;
 			return (NULL);
 		}
 	}

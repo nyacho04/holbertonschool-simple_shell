@@ -12,7 +12,7 @@
 #define BUFFER_SIZE 1024
 extern char **environ;
 
-char *srch_path(char *line,char * argv0);
+char *srch_path(char *line,char * argv0,int *status);
 char *flags_process(char *line);
 char *execute(char *pointer);
 int is_interactive(void);
